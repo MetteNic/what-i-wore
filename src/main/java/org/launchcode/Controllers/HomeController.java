@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by mettenichols on 4/12/17.
  */
+
+//put login form in here as well
 @Controller
 public class HomeController {
 
