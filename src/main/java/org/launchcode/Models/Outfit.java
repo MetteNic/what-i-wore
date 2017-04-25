@@ -24,9 +24,9 @@ public class Outfit {
     @Size(min =1, message = "please provide a description ")
     private String description;
 
-    Outfit(){};
+    public Outfit(){};
 
-    Outfit(String name, String description) {
+    public Outfit(String name, String description) {
         this.name = name;
         this.description = description;
     }
