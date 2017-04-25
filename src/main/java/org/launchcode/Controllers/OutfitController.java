@@ -39,7 +39,9 @@ public class OutfitController {
         }
 
         outfitDao.save(newOutfit);
-        return "redirect:";
+        model.addAttribute("title", "Browse Outfits");
+        model.addAttribute("outfits", outfitDao.findAll());
+        return "browse";
     }
 }
 
