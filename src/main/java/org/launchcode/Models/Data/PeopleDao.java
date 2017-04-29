@@ -1,5 +1,6 @@
 package org.launchcode.Models.Data;
 
+import org.launchcode.Models.People;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -20,6 +20,9 @@
     <tr th:each="outfit : ${outfits}">
         <td th:text="${outfit.name}"></td>
         <td th:text="${outfit.description}"></td>
+        <td th:text="${outfit.location}"></td>
+        <td th:text="${outfit.occasion}"></td>
+        <td th:text="${outfit.people}"></td>
     </tr>
 
 </table>
