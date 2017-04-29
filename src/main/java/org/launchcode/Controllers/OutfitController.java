@@ -66,7 +66,7 @@ public class OutfitController {
         newOutfit.setLocation(loc);
         Occasion occ = occasionDao.findOne(occasionId);
         newOutfit.setOccasion(occ);
-        People peo=peopleDao.findOne(peopleId);
+        People peo = peopleDao.findOne(peopleId);
         newOutfit.setPeople(peo);
         outfitDao.save(newOutfit);
         model.addAttribute("title", "Browse Outfits");
