@@ -1,10 +1,10 @@
 
 function main(){
-
-$("form").submit(function(e) {
-  e.preventDefault();
-  alert($(this).serialize());
-});
+//
+//$("form").submit(function(e) {
+//  e.preventDefault();
+//  alert($(this).serialize());
+//});
 
 
 $("#addTagButton").click(function(e) {
@@ -12,7 +12,7 @@ $("#addTagButton").click(function(e) {
   console.log("in click handler")
   console.log("tagInput value: "+$("#tagInput"))
   if ($('#tagInput').val() !== '') {
-  	console.log("Tag has value")
+  	console.log("Tag added")
     $("#tagList").append($("<option>", {
       value: $("#tagInput").val(),
       selected: "selected",
