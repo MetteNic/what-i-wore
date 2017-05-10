@@ -50,8 +50,9 @@ public class OutfitController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddOutfitForm(@ModelAttribute @Valid Outfit newOutfit,
-                                       Errors errors, @RequestParam int locationId,
-                                       @RequestParam int occasionId, @RequestParam int peopleId,
+                                       Errors errors, @RequestParam(defaultValue = "0") int locationId,
+                                       @RequestParam(defaultValue = "0") int occasionId,
+                                       @RequestParam(defaultValue = "0") int peopleId,
                                        Model model) {
 
         if (errors.hasErrors()) {

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" th:object="${outfit}">
+    <div class="form-group">
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="description">Description</label>
+        <input class="form-control" th:field="*{description}" />
+        <span th:errors="*{description}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="location">Location</label>
+        <select name="locationId">
+            <option th:each="location : ${locations}"
+                    th:text="${location.name}"
+                    th:value="${location.id}"></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label th:for="occasion">Occasion</label>
+        <select name="occasionId">
+            <option th:each="occasion : ${occasions}"
+                    th:text="${occasion.name}"
+                    th:value="${occasion.id}"></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label th:for="people">People</label>
+        <select name="peopleId">
+            <option th:each="people : ${peoples}"
+                    th:text="${people.name}"
+                    th:value="${peoples.id}"></option>
+        </select>
+    </div>
+
+
+    <input type="submit" value="Add Outfit" />
+</form>
+
+<datalist id="foo">
+    <option value="a"></option>
+    <option value="b"></option>
+    <option value="c"></option>
+</datalist>
+
+<form action="#">
+    <input list="foo" type="text" id="fooInput"/>
+    <button id="addFooButton" >Add</button>
+    <div id="data">
+
+        <select id="fooList" multiple="multiple" size="1" name="fooList" />
+    </div>
+    <p>
+        <input type="submit"/>
+    </p>
+</form>
+
+</body>
+</html>
