@@ -1,21 +1,17 @@
 package org.launchcode.Models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mettenichols on 4/12/17.
+ * Created by mettenichols on 5/16/17.
  */
-@Entity
-public class Outfit {
-
-    @Id
-    @GeneratedValue
-    @Column(name="outfit_id")
-    private int id;
+public class ClientOutfit {
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -25,23 +21,8 @@ public class Outfit {
     @Size(min = 1, message = "please provide a description ")
     private String description;
 
+    private List<String> tagList= new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name="outfit_tag", joinColumns = @JoinColumn(name="outfit_id"), inverseJoinColumns=@JoinColumn(name="tag_id"))
-    private List<Tag> tagList;
-
-
-    public Outfit() {}
-
-    public Outfit(String name, String description, List<Tag> tagList) {
-        this.name = name;
-        this.description = description;
-        this.tagList = tagList;
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -59,12 +40,11 @@ public class Outfit {
         this.description = description;
     }
 
-    public List<Tag> getTagList() {
+    public List<String> getTagList() {
         return tagList;
     }
 
-    public void setTagList(List<Tag> tagList) {
+    public void setTagList(List<String> tagList) {
         this.tagList = tagList;
     }
 }
-

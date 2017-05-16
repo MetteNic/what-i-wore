@@ -7,28 +7,15 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${outfits} and ${outfits.size()}">no outfits :(</p>
+<p>Your outfit was succesfully added with these details:</p>
+<p>Name</p>
+<p th:text="*{outfit.name}"></p>
+<p>Description</p>
+<p th:text="*{outfit.description}"></p>
+<p>Tags</p>
+<p th:text="*{outfit.tagList}"></p>
 
 
-<table class="table">
-
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Location</th>
-        <th>Occasion</th>
-        <th>People</th>
-    </tr>
-
-    <tr th:each="outfit : ${outfits}">
-        <td th:text="${outfit.name}"></td>
-        <td th:text="${outfit.description}"></td>
-        <td th:text="${outfit.location}"></td>
-        <td th:text="${outfit.occasion}"></td>
-        <td th:text="${outfit.people}"></td>
-    </tr>
-
-</table>
 
 </body>
 </html>

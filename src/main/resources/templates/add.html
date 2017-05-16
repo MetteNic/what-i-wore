@@ -7,16 +7,16 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" style="max-width:600px;" th:object="${outfit}" action="#">
+<form method="post" style="max-width:600px;"  action="#">
     <div class="form-group">
         <label th:for="name">Name</label>
-        <input class="form-control" th:field="*{name}" />
-        <span th:errors="*{name}" class="error"></span>
+        <input class="form-control" name ="name" />
+        <!--<span th:errors="*{name}" class="error"></span>-->
     </div>
     <div class="form-group">
         <label th:for="description">Description</label>
-        <input class="form-control" th:field="*{description}" />
-        <span th:errors="*{description}" class="error"></span>
+        <input class="form-control" name = "description" />
+        <!--<span th:errors="*{description}" class="error"></span>-->
     </div>
     <div class ="form-group">
         <input type = "file" name ="img"/>
@@ -59,11 +59,11 @@
     <option value="c"></option>
 </datalist>
 
-
+    <label th:for="tagList">Tags</label>
     <input list="tag" type="text" id="tagInput"/>
     <button id="addTagButton" >Add</button>
     <div id="data">
-        <select id="tagList" multiple="multiple" size="1" name="tagList" />
+        <select id="tagList" multiple="multiple" size="1"  name ="tagList"/>
     </div>
     <p>
         <input type="submit" value ="Add Outfit!"/>

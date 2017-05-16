@@ -1,13 +1,7 @@
 package org.launchcode.Controllers;
 
-import org.launchcode.Models.Data.LocationDao;
-import org.launchcode.Models.Data.OccasionDao;
-import org.launchcode.Models.Data.OutfitDao;
-import org.launchcode.Models.Data.PeopleDao;
-import org.launchcode.Models.Location;
-import org.launchcode.Models.Occasion;
-import org.launchcode.Models.Outfit;
-import org.launchcode.Models.People;
+import org.launchcode.Models.*;
+import org.launchcode.Models.Data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mettenichols on 4/12/17.
@@ -26,52 +22,58 @@ import javax.validation.Valid;
 public class OutfitController {
 
     @Autowired
+    TagDao tagDao;
+
+    @Autowired
     OutfitDao outfitDao;
 
-    @Autowired
-    LocationDao locationDao;
-
-    @Autowired
-    OccasionDao occasionDao;
-
-    @Autowired
-    PeopleDao peopleDao;
+    static List<Tag> tagObjectList = new ArrayList<Tag>();
 
 
-    @RequestMapping(value ="add", method =RequestMethod.GET)
-    public String displayAddOutfitForm(Model model){
+    @RequestMapping(value = "add", method = RequestMethod.GET)
+    public String displayAddOutfitForm(Model model) {
         model.addAttribute("title", "Add Outfit");
-        model.addAttribute(new Outfit());
-        model.addAttribute("locations", locationDao.findAll());
-        model.addAttribute("occasions", occasionDao.findAll());
-        model.addAttribute("peoples", peopleDao.findAll());
+        // model.addAttribute(new Outfit());
+        // model.addAttribute("tagList", tagDao.findAll());
         return "add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddOutfitForm(@ModelAttribute @Valid Outfit newOutfit,
-                                       Errors errors, @RequestParam(defaultValue = "0") int locationId,
-                                       @RequestParam(defaultValue = "0") int occasionId,
-                                       @RequestParam(defaultValue = "0") int peopleId,
-                                       Model model) {
+    public String processAddOutfitForm(Model model, @RequestParam String name, @RequestParam String description,
+                                       @RequestParam ArrayList<String> tagList) {
 
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Outfit");
-            model.addAttribute("locations", locationDao.findAll());
-            model.addAttribute("occasions", occasionDao.findAll());
-            model.addAttribute("peoples", peopleDao.findAll());
-            return "add";
+        for (String tag : tagList) {
+            if (tagDao.findByName(tag) != null) {
+                Tag newTag = (tagDao.findByName(name));
+                tagObjectList.add(newTag);
+
+            } else {
+                Tag newTag = new Tag(tag);
+                tagDao.save(newTag);
+                tagObjectList.add(newTag);
+            }
+
+
         }
 
-        Location loc = locationDao.findOne(locationId);
-        newOutfit.setLocation(loc);
-        Occasion occ = occasionDao.findOne(occasionId);
-        newOutfit.setOccasion(occ);
-        People peo = peopleDao.findOne(peopleId);
-        newOutfit.setPeople(peo);
-        outfitDao.save(newOutfit);
-        model.addAttribute("title", "Browse Outfits");
-        model.addAttribute("outfits", outfitDao.findAll());
+        ClientOutfit outfit = new ClientOutfit();
+        outfit.setName(name);
+        outfit.setDescription(description);
+        outfit.setTagList(tagList);
+
+
+
+        Outfit persistentOutfit = new Outfit();
+        persistentOutfit.setName(name);
+        persistentOutfit.setDescription(description);
+        persistentOutfit.setTagList(tagObjectList);
+        outfitDao.save(persistentOutfit);
+
+
+
+        model.addAttribute("outfit", outfit);
+        model.addAttribute("title", "outfit added!" );
+
         return "browse";
     }
 }
