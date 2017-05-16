@@ -54,9 +54,8 @@
 
 
 <datalist id="tag">
-    <option value="a"></option>
-    <option value="b"></option>
-    <option value="c"></option>
+    <option th:each="tag: ${tags}"
+            th:text="${tag.name}"></option>
 </datalist>
 
     <label th:for="tagList">Tags</label>

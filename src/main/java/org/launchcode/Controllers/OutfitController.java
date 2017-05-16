@@ -34,7 +34,7 @@ public class OutfitController {
     public String displayAddOutfitForm(Model model) {
         model.addAttribute("title", "Add Outfit");
         // model.addAttribute(new Outfit());
-        // model.addAttribute("tagList", tagDao.findAll());
+         model.addAttribute("tags", tagDao.findAll());
         return "add";
     }
 
