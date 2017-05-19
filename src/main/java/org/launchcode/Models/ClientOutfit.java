@@ -23,6 +23,13 @@ public class ClientOutfit {
 
     private List<String> tagList= new ArrayList<>();
 
+    private byte[] image;
+
+    private int id;
+
+    public ClientOutfit() {
+    }
+
 
     public String getName() {
         return name;
@@ -46,5 +53,21 @@ public class ClientOutfit {
 
     public void setTagList(List<String> tagList) {
         this.tagList = tagList;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

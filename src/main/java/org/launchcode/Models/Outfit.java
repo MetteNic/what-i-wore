@@ -3,7 +3,6 @@ package org.launchcode.Models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +25,9 @@ public class Outfit {
     private String description;
 
 
+    private byte[] image;
+
+
     @ManyToMany
     @JoinTable(name="outfit_tag", joinColumns = @JoinColumn(name="outfit_id"), inverseJoinColumns=@JoinColumn(name="tag_id"))
     private List<Tag> tagList;
@@ -33,9 +35,10 @@ public class Outfit {
 
     public Outfit() {}
 
-    public Outfit(String name, String description, List<Tag> tagList) {
+    public Outfit(String name, String description, byte[] image, List<Tag> tagList) {
         this.name = name;
         this.description = description;
+        this.image = image;
         this.tagList = tagList;
     }
 
@@ -65,6 +68,14 @@ public class Outfit {
 
     public void setTagList(List<Tag> tagList) {
         this.tagList = tagList;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
 
