@@ -90,7 +90,7 @@ public class OutfitController {
     public ResponseEntity<byte[]> getImage(@PathVariable final int id, Model model) {
         byte[] bytes =outfitDao.findById(id).getImage();
 
-        // Set headers
+
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
 

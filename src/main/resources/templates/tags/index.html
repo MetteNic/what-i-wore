@@ -7,26 +7,6 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<div>
-    <ul>
-        <li th:each="location : ${locations}" th:text="${location.name}"></li>
-
-    </ul>
-</div>
-
-<div>
-    <ul>
-        <li th:each="occasion : ${occasions}" th:text="${occasion.name}"></li>
-
-    </ul>
-</div>
-
-<div>
-    <ul>
-        <li th:each="people : ${peoples}" th:text="${people.name}"></li>
-
-    </ul>
-</div>
 
 </body>
 </html>

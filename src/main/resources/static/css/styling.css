@@ -1,0 +1,29 @@
+
+        * {
+  box-sizing: border-box;
+}
+#data {
+  box-sizing: border-box;
+    overflow:hidden;
+    padding:0;
+	width:100vw;
+}
+select {
+	padding:0;
+	padding-left:1px;
+	border:none;
+
+	width:80vw;
+}
+option {
+	border:1px solid #000;
+	background-color:white;
+
+	margin-left:-1px;
+	display:inline-block;
+}
+
+.big-button{
+  text-align:center
+}
+
