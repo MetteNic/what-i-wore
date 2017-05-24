@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 @Transactional
 public interface TagDao extends CrudRepository<Tag, Integer> {
      Tag findByName(String name);
+     Tag findById(int id);
 
 
 

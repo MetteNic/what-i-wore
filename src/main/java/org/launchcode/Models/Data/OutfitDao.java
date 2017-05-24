@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by mettenichols on 4/12/17.
@@ -15,4 +16,5 @@ import javax.transaction.Transactional;
 public interface OutfitDao extends CrudRepository<Outfit, Integer> {
     Outfit findByName(String name);
     Outfit findById(int id);
+    List<Outfit> findByTagListName(String name);
 }

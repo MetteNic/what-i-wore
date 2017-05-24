@@ -24,7 +24,7 @@ public class Outfit {
     @Size(min = 1, message = "please provide a description ")
     private String description;
 
-
+    @Column(columnDefinition = "LONGBLOB")
     private byte[] image;
 
 
