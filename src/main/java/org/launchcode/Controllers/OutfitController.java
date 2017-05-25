@@ -38,14 +38,18 @@ public class OutfitController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddOutfitForm(Model model) {
         model.addAttribute("title", "Add Outfit");
-        // model.addAttribute(new Outfit());
+         model.addAttribute(new Outfit());
          model.addAttribute("tags", tagDao.findAll());
         return "add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddOutfitForm(Model model, @RequestParam String name, @RequestParam String description,
-                                       @RequestParam ArrayList<String> tagList, @RequestParam MultipartFile image ) throws IOException {
+    public String processAddOutfitForm(@ModelAttribute @Valid Outfit outfit, Errors errors, Model model,
+                                       @RequestParam List<String> tagList,
+                                       @RequestParam MultipartFile image,
+                                       @RequestParam String name,@RequestParam String description ) throws IOException {
+
+
 
         for (String tag : tagList) {
             if (tagDao.findByName(tag) != null) {
@@ -61,6 +65,12 @@ public class OutfitController {
 
         }
 
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Add Outfit");
+            model.addAttribute("tags", tagDao.findAll());
+            return "add";
+        }
+
         byte[] imageBytes = image.getBytes();
         Outfit persistentOutfit = new Outfit();
         persistentOutfit.setName(name);
@@ -70,17 +80,17 @@ public class OutfitController {
 
         outfitDao.save(persistentOutfit);
 
-        ClientOutfit outfit = new ClientOutfit();
-        outfit.setName(name);
-        outfit.setDescription(description);
-        outfit.setTagList(tagList);
-        outfit.setImage(imageBytes);
-        outfit.setId(outfitDao.findByName(name).getId());
+        ClientOutfit clientOutfit = new ClientOutfit();
+        clientOutfit.setName(name);
+        clientOutfit.setDescription(description);
+        clientOutfit.setTagList(tagList);
+        clientOutfit.setImage(imageBytes);
+        clientOutfit.setId(outfitDao.findByName(name).getId());
 
 
 
-        model.addAttribute("outfit", outfit);
-        model.addAttribute("id", outfit.getId());
+        model.addAttribute("outfit", clientOutfit);
+        model.addAttribute("id", clientOutfit.getId());
         model.addAttribute("title", "outfit added!" );
 
         return "browse";

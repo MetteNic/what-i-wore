@@ -40,8 +40,9 @@ public class TagController {
     @RequestMapping (value="/{id}", method = RequestMethod.GET)
     public String displaySearchResult(@PathVariable final int id, Model model) {
          String searchTerm = tagDao.findById(id).getName();
+         List<Outfit> outfits = outfitDao.findByTagListName(searchTerm);
 
-         model.addAttribute("outfits", outfitDao.findByTagListName(searchTerm));
+         model.addAttribute("outfits", outfits);
          model.addAttribute("title", "Outfits");
 
          return"tags/results";

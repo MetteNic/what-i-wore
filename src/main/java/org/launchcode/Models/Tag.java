@@ -20,10 +20,6 @@ public class Tag {
     @NotNull
     private String name;
 
-
-
-    //public List<Outfit> outfits = new ArrayList<>();
-
     public Tag() {};
 
     public Tag (String name) {
@@ -43,11 +39,4 @@ public class Tag {
     }
 
 
-//    public List<Outfit> getOutfits() {
-//        return outfits;
-//    }
-//
-//    public void setOutfits(List<Outfit> outfits) {
-//        this.outfits = outfits;
-//    }
 }

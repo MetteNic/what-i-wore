@@ -7,9 +7,11 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
-<a th:each="tag: ${tags}"
+<p th:each="tag: ${tags}">
+<a class ="button"
    th:text="${tag.name}"
    th:href ="@{'/tags/' +${tag.id}}" ></a>
+</p>
 
 
 </body>
