@@ -77,3 +77,6 @@ ul.form-group li {
     color: white;
     font-weight: bold;
 }
+
+ul{
+list-style-type: none;}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}"></h1>
+<div class="container">
+    <div th:if="${outfits} and ${outfits.size()}">
+
+        <div class="row">
+            <ul class="thumbnails">
+                <li th:each="outfit : ${outfits}" class="col-md-4">
+                    <div class="thumbnail">
+                        <img  th:src="@{'/outfits/' +${outfit.id}+ '/image'}" th:alt="${outfit.name}"/>
+                        <div class="caption">
+                            <h3 th:text="${outfit.name}"></h3>
+                            <p th:text="${outfit.description}"></p>
+                            <p align="center"><a th:href ="@{'/outfits/' +${outfit.id}}" class="btn btn-primary btn-block">Details</a></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

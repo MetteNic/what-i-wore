@@ -106,5 +106,13 @@ public class OutfitController {
 
         return new ResponseEntity<byte[]> (bytes, headers, HttpStatus.CREATED);
     }
+
+    @RequestMapping(value="outfits", method = RequestMethod.GET)
+    public String displayAllOutfits(Model model) {
+
+        model.addAttribute("outfits", outfitDao.findAll());
+
+        return "outfits";
+    }
 }
 
