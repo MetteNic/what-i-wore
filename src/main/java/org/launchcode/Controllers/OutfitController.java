@@ -114,5 +114,21 @@ public class OutfitController {
 
         return "outfits";
     }
+
+    @RequestMapping(value="outfits/{id}", method = RequestMethod.GET)
+    public String displayOutfitDetail(@PathVariable final int id, Model model) {
+
+        Outfit outfit = outfitDao.findById(id);
+        List<String> tagStrings = new ArrayList<>();
+        for (Tag tag: outfit.getTagList()) {
+            tagStrings.add(tag.getName());
+
+        }
+
+        model.addAttribute("outfit", outfit);
+        model.addAttribute("tagList", tagStrings);
+
+        return "browse";
+    }
 }
 
