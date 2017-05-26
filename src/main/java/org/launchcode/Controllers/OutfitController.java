@@ -32,7 +32,7 @@ public class OutfitController {
     @Autowired
     OutfitDao outfitDao;
 
-    static List<Tag> tagObjectList = new ArrayList<Tag>();
+
 
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
@@ -50,7 +50,7 @@ public class OutfitController {
                                        @RequestParam String name,@RequestParam String description ) throws IOException {
 
 
-
+        List<Tag> tagObjectList = new ArrayList<Tag>();
         for (String tag : tagList) {
             if (tagDao.findByName(tag) != null) {
                 Tag newTag = (tagDao.findByName(tag));
