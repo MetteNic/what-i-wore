@@ -92,6 +92,7 @@ public class OutfitController {
         model.addAttribute("outfit", clientOutfit);
         model.addAttribute("id", clientOutfit.getId());
         model.addAttribute("title", "outfit added!" );
+        model.addAttribute("tagStrings", tagList);
 
         return "browse";
     }
@@ -126,7 +127,7 @@ public class OutfitController {
         }
 
         model.addAttribute("outfit", outfit);
-       model.addAttribute("tagList", tagStrings);
+       model.addAttribute("tagStrings", tagStrings);
 
         return "browse";
     }

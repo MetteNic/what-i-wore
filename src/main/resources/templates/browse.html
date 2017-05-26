@@ -13,7 +13,7 @@
 <p>Description</p>
 <p th:text="*{outfit.description}"></p>
 <p>Tags</p>
-<p th:text="${tagList}"></p>
+<p th:text="${tagStrings}"></p>
 
 <img th:src="@{'/outfits/' +${id}+ '/image'}" />
 
