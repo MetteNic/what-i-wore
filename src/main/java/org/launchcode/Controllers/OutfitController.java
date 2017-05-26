@@ -53,7 +53,7 @@ public class OutfitController {
 
         for (String tag : tagList) {
             if (tagDao.findByName(tag) != null) {
-                Tag newTag = (tagDao.findByName(name));
+                Tag newTag = (tagDao.findByName(tag));
                 tagObjectList.add(newTag);
 
             } else {
