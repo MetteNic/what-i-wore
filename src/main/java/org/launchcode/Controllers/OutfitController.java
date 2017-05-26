@@ -119,14 +119,14 @@ public class OutfitController {
     public String displayOutfitDetail(@PathVariable final int id, Model model) {
 
         Outfit outfit = outfitDao.findById(id);
-        List<String> tagStrings = new ArrayList<>();
-        for (Tag tag: outfit.getTagList()) {
-            tagStrings.add(tag.getName());
-
-        }
-
+//        List<String> tagStrings = new ArrayList<>();
+//        for (Tag tag: outfit.getTagList()) {
+//            tagStrings.add(tag.getName());
+//
+//        }
+//
         model.addAttribute("outfit", outfit);
-        model.addAttribute("tagList", tagStrings);
+//        model.addAttribute("tagList", tagStrings);
 
         return "browse";
     }
