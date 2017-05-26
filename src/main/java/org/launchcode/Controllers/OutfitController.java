@@ -38,13 +38,13 @@ public class OutfitController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddOutfitForm(Model model) {
         model.addAttribute("title", "Add Outfit");
-         model.addAttribute(new Outfit());
+//         model.addAttribute(new Outfit());
          model.addAttribute("tags", tagDao.findAll());
         return "add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddOutfitForm(@ModelAttribute @Valid Outfit outfit, Errors errors, Model model,
+    public String processAddOutfitForm( Model model,
                                        @RequestParam List<String> tagList,
                                        @RequestParam MultipartFile image,
                                        @RequestParam String name,@RequestParam String description ) throws IOException {
@@ -65,11 +65,11 @@ public class OutfitController {
 
         }
 
-        if(errors.hasErrors()) {
-            model.addAttribute("title", "Add Outfit");
-            model.addAttribute("tags", tagDao.findAll());
-            return "add";
-        }
+//        if(errors.hasErrors()) {
+//            model.addAttribute("title", "Add Outfit");
+//            model.addAttribute("tags", tagDao.findAll());
+//            return "add";
+//        }
 
         byte[] imageBytes = image.getBytes();
         Outfit persistentOutfit = new Outfit();
