@@ -21,5 +21,6 @@ $("#addTagButton").click(function(e) {
     $("#tagInput").val("");
   }
 });
+$('[data-toggle="popover"]').popover();
 }
 $(document).ready(main);
