@@ -32,7 +32,7 @@ public class TagController {
     public String index(Model model) {
 
         model.addAttribute("tags", tagDao.findAll());
-        model.addAttribute("title", "Tags");
+
 
         return "tags/index";
     }

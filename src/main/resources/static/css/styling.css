@@ -65,7 +65,7 @@ ul.form-group li {
 }
 
 .button {
-    display: block;
+    display: inline-block;
     width: 115px;
     height: 25px;
     background: #4E9CAF;
@@ -85,4 +85,19 @@ body.add {
 
 .pretty {
     text-align: center;
+}
+
+.button-container {
+    width: 520px;
+    background: gray;
+    overflow-y: auto;
+}
+
+.button-container > a {
+    width: 100px;
+    height: 100px;
+    float: left;
+    background: lightgray;
+    margin: 15px;
+    display:inline-block
 }

@@ -5,13 +5,29 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="${title}">Default Title</h1>
+<h3 class="pretty" >Where are you going?</h3>
+<h3 class="pretty">What are you doing?</h3>
+<h3 class="pretty" >Who's going to be there?</h3>
 
-<p th:each="tag: ${tags}">
-<a class ="button"
+<br>
+<br>
+<br>
+
+
+<a th:each="tag: ${tags}" class ="button"
    th:text="${tag.name}"
    th:href ="@{'/tags/' +${tag.id}}" ></a>
-</p>
+
+
+<!--<div class="menu-container">-->
+    <!--<div th:each="tag: ${tags}" class="button-container">-->
+        <!--<a class ="button"-->
+           <!--th:text="${tag.name}"-->
+           <!--th:href ="@{'/tags/' +${tag.id}}" >-->
+
+        <!--</a>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 </body>
