@@ -37,7 +37,7 @@ public class OutfitController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddOutfitForm(Model model) {
-        model.addAttribute("title", "Add Outfit");
+        model.addAttribute("title", "What are you wearing?");
          model.addAttribute(new ClientOutfit());
          model.addAttribute("tags", tagDao.findAll());
         return "add";
@@ -92,6 +92,7 @@ public class OutfitController {
         model.addAttribute("outfit", persistentOutfit);
         model.addAttribute("id", persistentOutfit.getId());
         model.addAttribute("title", "outfit added!" );
+        model.addAttribute("header", "Your outfit was succesfully added with these details:");
         model.addAttribute("tagStrings", tagList);
 
         return "browse";
@@ -99,8 +100,10 @@ public class OutfitController {
 
     @RequestMapping (value="/outfits/{id}/image", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getImage(@PathVariable final int id, Model model) {
-        byte[] bytes =outfitDao.findById(id).getImage();
+        byte[] bytes = outfitDao.findById(id).getImage();
 //    if bytes  equals null then bytes equals another image put in resources
+//    if (bytes == null) {bytes = }
+
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
@@ -128,6 +131,8 @@ public class OutfitController {
 
         model.addAttribute("outfit", outfit);
        model.addAttribute("tagStrings", tagStrings);
+       model.addAttribute("header", "Here are the details of your outfit");
+
 
         return "browse";
     }

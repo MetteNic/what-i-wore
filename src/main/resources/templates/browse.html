@@ -7,13 +7,15 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<p>Your outfit was succesfully added with these details:</p>
-<p>Name</p>
+<h3 th:text="${header}"></h3>
+<h5>Name</h5>
 <p th:text="*{outfit.name}"></p>
-<p>Description</p>
+<h5>Description</h5>
 <p th:text="*{outfit.description}"></p>
-<p>Tags</p>
-<p th:text="${tagStrings}"></p>
+<h5>Tags</h5>
+<p th:each="tag: ${tagStrings}">
+    <a class ="button"
+       th:text="${tag}"></a> </p>
 
 <img th:src="@{'/outfits/' +${id}+ '/image'}" />
 

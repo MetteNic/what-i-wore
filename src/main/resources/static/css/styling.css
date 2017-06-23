@@ -12,13 +12,11 @@ select {
 	padding:0;
 	padding-left:1px;
 	border:none;
-
 	width:80vw;
 }
 option {
 	border:1px solid #000;
 	background-color:white;
-
 	margin-left:-1px;
 	display:inline-block;
 }
@@ -80,3 +78,11 @@ ul.form-group li {
 
 ul{
 list-style-type: none;}
+
+body.add {
+    background: #f3e6ff;
+}
+
+.pretty {
+    text-align: center;
+}
