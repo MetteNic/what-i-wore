@@ -87,17 +87,9 @@ body.add {
     text-align: center;
 }
 
-.button-container {
-    width: 520px;
-    background: gray;
-    overflow-y: auto;
-}
+.btn {
+    background: #dab3ff;}
 
-.button-container > a {
-    width: 100px;
-    height: 100px;
-    float: left;
-    background: lightgray;
-    margin: 15px;
-    display:inline-block
-}
+
+
+

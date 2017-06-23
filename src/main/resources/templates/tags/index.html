@@ -3,32 +3,28 @@
 <head th:replace="fragments :: head"></head>
 <body>
 
+<div class="container-fluid">
 <nav th:replace="fragments :: navigation"></nav>
 
-<h3 class="pretty" >Where are you going?</h3>
-<h3 class="pretty">What are you doing?</h3>
-<h3 class="pretty" >Who's going to be there?</h3>
-
-<br>
-<br>
-<br>
+<h3 class="pretty" >Where are you going? What are you doing? Who's going to be there?</h3>
 
 
-<a th:each="tag: ${tags}" class ="button"
-   th:text="${tag.name}"
-   th:href ="@{'/tags/' +${tag.id}}" ></a>
+<br/>
+<br/>
+<br/>
+    <div class="row">
+        <div class="col-sm-4" ></div>
+        <div class="col-sm-4">
+            <a th:each="tag: ${tags}" class="btn"
+               th:text="${tag.name}"
+               th:href ="@{'/tags/' +${tag.id}}" ></a>
+        </div>
+        <div class="col-sm-4" ></div>
 
 
-<!--<div class="menu-container">-->
-    <!--<div th:each="tag: ${tags}" class="button-container">-->
-        <!--<a class ="button"-->
-           <!--th:text="${tag.name}"-->
-           <!--th:href ="@{'/tags/' +${tag.id}}" >-->
-
-        <!--</a>-->
-    <!--</div>-->
-<!--</div>-->
 
 
+    </div>
+</div>
 </body>
 </html>
