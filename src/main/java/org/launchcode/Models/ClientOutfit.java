@@ -1,5 +1,7 @@
 package org.launchcode.Models;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +25,7 @@ public class ClientOutfit {
 
     private List<String> tagList= new ArrayList<>();
 
-    private byte[] image;
+    private MultipartFile image;
 
     private int id;
 
@@ -55,11 +57,11 @@ public class ClientOutfit {
         this.tagList = tagList;
     }
 
-    public byte[] getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 

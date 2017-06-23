@@ -38,16 +38,16 @@ public class OutfitController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddOutfitForm(Model model) {
         model.addAttribute("title", "Add Outfit");
-//         model.addAttribute(new Outfit());
+         model.addAttribute(new ClientOutfit());
          model.addAttribute("tags", tagDao.findAll());
         return "add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddOutfitForm( Model model,
-                                       @RequestParam List<String> tagList,
-                                       @RequestParam MultipartFile image,
-                                       @RequestParam String name,@RequestParam String description ) throws IOException {
+    public String processAddOutfitForm( Model model,@ModelAttribute  @Valid ClientOutfit clientOutfit,
+                                        Errors errors,
+                                        @RequestParam String name, @RequestParam String description,
+                                        @RequestParam MultipartFile image, @RequestParam List<String> tagList) throws IOException {
 
 
         List<Tag> tagObjectList = new ArrayList<Tag>();
@@ -65,11 +65,11 @@ public class OutfitController {
 
         }
 
-//        if(errors.hasErrors()) {
-//            model.addAttribute("title", "Add Outfit");
-//            model.addAttribute("tags", tagDao.findAll());
-//            return "add";
-//        }
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Add Outfit");
+            model.addAttribute("tags", tagDao.findAll());
+            return "add";
+        }
 
         byte[] imageBytes = image.getBytes();
         Outfit persistentOutfit = new Outfit();
@@ -80,17 +80,17 @@ public class OutfitController {
 
         outfitDao.save(persistentOutfit);
 
-        ClientOutfit clientOutfit = new ClientOutfit();
-        clientOutfit.setName(name);
-        clientOutfit.setDescription(description);
-        clientOutfit.setTagList(tagList);
-        clientOutfit.setImage(imageBytes);
-        clientOutfit.setId(outfitDao.findByName(name).getId());
+//        ClientOutfit clientOutfit = new ClientOutfit();
+//        clientOutfit.setName(name);
+//        clientOutfit.setDescription(description);
+//        clientOutfit.setTagList(tagList);
+//        clientOutfit.setImage(imageBytes);
+//        clientOutfit.setId(outfitDao.findByName(name).getId());
 
 
 
-        model.addAttribute("outfit", clientOutfit);
-        model.addAttribute("id", clientOutfit.getId());
+        model.addAttribute("outfit", persistentOutfit);
+        model.addAttribute("id", persistentOutfit.getId());
         model.addAttribute("title", "outfit added!" );
         model.addAttribute("tagStrings", tagList);
 
@@ -100,7 +100,7 @@ public class OutfitController {
     @RequestMapping (value="/outfits/{id}/image", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getImage(@PathVariable final int id, Model model) {
         byte[] bytes =outfitDao.findById(id).getImage();
-
+//    if bytes  equals null then bytes equals another image put in resources
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
