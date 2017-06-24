@@ -3,30 +3,28 @@
 <head th:replace="fragments :: head"></head>
 <body>
 
-<h1 th:text="${title}">Default Title</h1>
-
+<div class="container-fluid">
 <nav th:replace="fragments :: navigation"></nav>
 
-<div>
-    <ul>
-        <li th:each="location : ${locations}" th:text="${location.name}"></li>
+<h3 class="pretty" >Where are you going? What are you doing? Who's going to be there?</h3>
 
-    </ul>
+
+<br/>
+<br/>
+<br/>
+    <div class="row">
+        <div class="col-sm-4" ></div>
+        <div class="col-sm-4">
+            <a th:each="tag: ${tags}" class="btn"
+               th:text="${tag.name}"
+               th:href ="@{'/tags/' +${tag.id}}" ></a>
+        </div>
+        <div class="col-sm-4" ></div>
+
+
+
+
+    </div>
 </div>
-
-<div>
-    <ul>
-        <li th:each="occasion : ${occasions}" th:text="${occasion.name}"></li>
-
-    </ul>
-</div>
-
-<div>
-    <ul>
-        <li th:each="people : ${peoples}" th:text="${people.name}"></li>
-
-    </ul>
-</div>
-
 </body>
 </html>

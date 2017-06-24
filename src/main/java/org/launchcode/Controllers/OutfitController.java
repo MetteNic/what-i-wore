@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 import static java.lang.String.valueOf;
 
@@ -103,12 +106,30 @@ public class OutfitController {
         byte[] bytes = outfitDao.findById(id).getImage();
 //    if bytes  equals null then bytes equals another image put in resources
 //    if (bytes == null) {bytes = }
-
-
+        if(bytes==null || bytes.length==0) {
+            bytes = getNoPhotoImage();
+        }
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
 
         return new ResponseEntity<byte[]> (bytes, headers, HttpStatus.CREATED);
+    }
+
+    private byte[] getNoPhotoImage() {
+        byte[] bytes;
+        InputStream nophotoStream = this.getClass().getResourceAsStream("/static/images/nophoto.jpg");
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        int b;
+        try {
+            while ((b = nophotoStream.read()) >= 0) {
+                os.write(b);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        bytes = os.toByteArray();
+        return bytes;
     }
 
     @RequestMapping(value="outfits", method = RequestMethod.GET)

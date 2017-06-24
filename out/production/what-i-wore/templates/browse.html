@@ -7,28 +7,38 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${outfits} and ${outfits.size()}">no outfits :(</p>
+<!--<h3 th:text="${header}"></h3>-->
+<!--<h5>Name</h5>-->
+<!--<p th:text="*{outfit.name}"></p>-->
+<!--<h5>Description</h5>-->
+<!--<p th:text="*{outfit.description}"></p>-->
+<!--<h5>Tags</h5>-->
+<!--<p th:each="tag: ${tagStrings}">-->
+    <!--<a class ="button"-->
+       <!--th:text="${tag}"></a> </p>-->
+
+<!--<img th:src="@{'/outfits/' +${id}+ '/image'}" />-->
+<div class="container">
+    <div class="row">
+        <ul class="thumbnails">
+            <li  class="col-md-4">
+                <div class="thumbnail">
+    <img  th:src="@{'/outfits/' +${outfit.id}+ '/image'}" th:alt="${outfit.name}"/>
+    <div class="caption">
+        <h3 align="center" th:text="${outfit.name}"></h3>
+        <p th:text="${outfit.description}"></p>
+        <!--<p align="center"><a th:href ="@{'/outfits/' +${outfit.id}}" class="btn btn-primary btn-block">Details</a></p>-->
+        <a  th:each="tag :${outfit.tagList}" class="btn btn-primary" th:text="${tag.name}"></a>
+    </div>
+</div>
+            </li>
+        </ul>
+</div>
+</div>
 
 
-<table class="table">
 
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Location</th>
-        <th>Occasion</th>
-        <th>People</th>
-    </tr>
 
-    <tr th:each="outfit : ${outfits}">
-        <td th:text="${outfit.name}"></td>
-        <td th:text="${outfit.description}"></td>
-        <td th:text="${outfit.location}"></td>
-        <td th:text="${outfit.occasion}"></td>
-        <td th:text="${outfit.people}"></td>
-    </tr>
-
-</table>
 
 </body>
 </html>
