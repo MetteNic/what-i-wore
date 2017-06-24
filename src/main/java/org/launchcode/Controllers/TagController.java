@@ -43,7 +43,7 @@ public class TagController {
          List<Outfit> outfits = outfitDao.findByTagListName(searchTerm);
 
          model.addAttribute("outfits", outfits);
-         model.addAttribute("title", "Outfits");
+         model.addAttribute("title", "outfits tagged with: " + searchTerm);
 
          return"tags/results";
 

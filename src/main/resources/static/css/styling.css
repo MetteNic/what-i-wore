@@ -79,16 +79,18 @@ ul.form-group li {
 ul{
 list-style-type: none;}
 
-body.add {
+body {
     background: #f3e6ff;
 }
 
 .pretty {
     text-align: center;
+    color: #737373;
 }
 
 .btn {
-    background: #dab3ff;}
+    background: #dab3ff;
+    margin: 10px;}
 
 
 

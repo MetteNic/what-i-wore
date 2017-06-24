@@ -115,6 +115,7 @@ public class OutfitController {
     public String displayAllOutfits(Model model) {
 
         model.addAttribute("outfits", outfitDao.findAll());
+        model.addAttribute("title", "Looking for some inspiration??");
 
         return "outfits";
     }
