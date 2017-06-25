@@ -4,10 +4,32 @@
 <head th:replace="fragments :: head"></head>
 <body>
 
-<h1 th:text="${title}">Default Title</h1>
+
 
 <nav th:replace="fragments :: navigation"></nav>
 
+<div class = "container">
+    <div class = "row">
+        <div class="col-md-6">
+            <div class="circle">
+                <div class="circle__inner">
+                    <div class="circle__wrapper">
+                        <div class="circle__content">Circle text</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="circle">
+                <div class="circle__inner">
+                    <div class="circle__wrapper">
+                        <div class="circle__content">A circle with a lot more text inside</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
