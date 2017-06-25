@@ -75,8 +75,8 @@ ul.form-group li {
     font-weight: bold;
 }
 
-ul{
-list-style-type: none;}
+ul {
+    list-style-type: none;}
 
 body {
     background: #f3e6ff;
@@ -129,18 +129,25 @@ body {
   display: table-cell;
   padding: 1em;
   vertical-align: middle;
+
 }
 
 @media (min-width: 480px) {
   .circle__content {
-    font-size: 2em;
+    font-size: 1em;
   }
 }
 
 @media (min-width: 768px) {
   .circle__content {
-    font-size: 4em;
+    font-size: 2em;
   }
 }
+.purple {
+color:#800080; }
+
+#title{
+   text-align: center;
+   color:#800080; }
 
 

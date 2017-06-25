@@ -9,21 +9,44 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <div class = "container">
+    <div class ="row">
+
+        <div class ="col-md-12">
+            <div class = "jumbotron">
+                <h3  id = "title">What I Wore</h3>
+                <p>Ready to solve the problem of remembering what you wore the last time you.... went on a job interview,
+                    attended that monthly trivia night with your friends or gave a speech at a Meetup. Start snapping and saving pictures of your outfits and tag them with all the relevant Who, Where, and When tags.
+                    Later on, do a search to see exactly what you wore every other time your boss came to town.</p>
+            </div>
+        </div>
+
+
+    </div>
     <div class = "row">
-        <div class="col-md-6">
+
+        <div class="col-md-4">
             <div class="circle">
                 <div class="circle__inner">
                     <div class="circle__wrapper">
-                        <div class="circle__content">Circle text</div>
+                        <div class="circle__content"><a class ="purple" href="/add">What are you wearing today?</a></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="circle">
                 <div class="circle__inner">
                     <div class="circle__wrapper">
-                        <div class="circle__content">A circle with a lot more text inside</div>
+                        <div class="circle__content"><a class ="purple" href="/tags">Can't remember what you wore last time?</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="circle">
+                <div class="circle__inner">
+                    <div class="circle__wrapper">
+                        <div class="circle__content"><a class ="purple" href="/outfits">Looking for an idea of what to wear?</a></div>
                     </div>
                 </div>
             </div>
