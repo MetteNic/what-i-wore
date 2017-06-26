@@ -83,14 +83,6 @@ public class OutfitController {
 
         outfitDao.save(persistentOutfit);
 
-//        ClientOutfit clientOutfit = new ClientOutfit();
-//        clientOutfit.setName(name);
-//        clientOutfit.setDescription(description);
-//        clientOutfit.setTagList(tagList);
-//        clientOutfit.setImage(imageBytes);
-//        clientOutfit.setId(outfitDao.findByName(name).getId());
-
-
 
         model.addAttribute("outfit", persistentOutfit);
         model.addAttribute("id", persistentOutfit.getId());
@@ -104,8 +96,7 @@ public class OutfitController {
     @RequestMapping (value="/outfits/{id}/image", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getImage(@PathVariable final int id, Model model) {
         byte[] bytes = outfitDao.findById(id).getImage();
-//    if bytes  equals null then bytes equals another image put in resources
-//    if (bytes == null) {bytes = }
+
         if(bytes==null || bytes.length==0) {
             bytes = getNoPhotoImage();
         }
