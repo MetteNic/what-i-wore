@@ -17,11 +17,10 @@ public class Outfit {
     private int id;
 
     @NotNull
-    @Size(min = 3, max = 15)
+    @Size(min = 3, max = 35)
     private String name;
 
-    @NotNull
-    @Size(min = 1, message = "please provide a description ")
+
     private String description;
 
     @Column(columnDefinition = "LONGBLOB")
