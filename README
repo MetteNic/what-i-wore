@@ -1,0 +1,16 @@
+What-i-wore
+
+This is my final project for LaunchCode's LC101 class. It was an independent project to show both the skills I learned in class 
+as well as my capacity for researching and learning on my own.
+It is an app to keep track of what you wore on specific occasions. Pictures can be uploaded and tagged with useful reminders of 
+what you were doing, and who you were with. The idea is that then the next time you are going to the same location, you can 
+click on tags to be shown what you wore there before. It also serves as an inspirational gallery.
+
+Built With:
+Java8, Spring, and IntelliJ IDEA.
+Gradle - Build management
+MySQL via MAMP - Database creation and table definitions
+Hibernate - ORM
+HTML,CSS, and Bootstrap - UI design and execution
+Git- Version control
+
